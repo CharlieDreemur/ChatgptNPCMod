@@ -5,6 +5,8 @@ VisualStudioVersion = 17.5.33502.453
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChatgptNPCMod", "ChatgptNPCMod\ChatgptNPCMod.csproj", "{1820B09A-F809-4AE8-BBE8-11DF532E47B4}"
 EndProject
+Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "ChatgptServer", "ChatgptServer\ChatgptServer.njsproj", "{50DF8C30-B458-44DC-BE5D-E71B871F14F1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{1820B09A-F809-4AE8-BBE8-11DF532E47B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1820B09A-F809-4AE8-BBE8-11DF532E47B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1820B09A-F809-4AE8-BBE8-11DF532E47B4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50DF8C30-B458-44DC-BE5D-E71B871F14F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50DF8C30-B458-44DC-BE5D-E71B871F14F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50DF8C30-B458-44DC-BE5D-E71B871F14F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50DF8C30-B458-44DC-BE5D-E71B871F14F1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

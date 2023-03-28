@@ -8,11 +8,15 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine.UI;
 using UnityEngine;
+using System.Collections;
+using UnityEngine.Events;
+using static UnityEngine.TouchScreenKeyboard;
 
 namespace ChatgptNPCMod
 {
-    public static class ChatgptNPCUI
+    public class ChatgptNPCUI:MonoBehaviour
     {
+        public static Text status;
 
         private static GameObject _instance;
         //The instanitated UI gameObject instance
@@ -41,6 +45,7 @@ namespace ChatgptNPCMod
         }
         public static GameObject LoadUI()
         {
+ 
             GameObject uiPrefab = null;
             GameObject uiObj = null;
             AssetBundle ab = LoadAssetBundle();
@@ -72,11 +77,36 @@ namespace ChatgptNPCMod
             ui.AddComponent<DraggablePanel>();
             Button submitBtn = ui.transform.Find("SubmitBtn").GetComponent<Button>();
             InputField inputField = ui.transform.Find("InputField").GetComponent<InputField>();
-            submitBtn.onClick.AddListener(() =>
+            status = ui.transform.Find("Status").GetComponent<Text>();
+            submitBtn.onClick.AddListener(async () =>
             {
-                ChatgptNPC.MyLogger.LogInfo(inputField.text);
-                ChatgptNPC.Say(inputField.text);
+                submitBtn.gameObject.SetActive(false);
+                status.gameObject.SetActive(true);
+                ChatgptNPC.messages.Add(new ChatgptNPC.Message("user", inputField.text));
+                string message = ChatgptNPC.MessagesToString(ChatgptNPC.messages);
+                status.StartCoroutine(UpdateStatusText());
+
+                string result = await ChatgptNPCAPI.GetParseMessage(message);
+                result = ChatgptNPC.CleanString(result);
+                ChatgptNPC.messages.Add(new ChatgptNPC.Message("assitant", result));
+                ChatgptNPC.Say(result);
+                submitBtn.gameObject.SetActive(true);
+                status.gameObject.SetActive(false);
             });
         }
+
+        private static IEnumerator UpdateStatusText()
+        {
+            while (true)
+            {
+                status.text = "思考中.";
+                yield return new WaitForSeconds(0.5f);
+                status.text = "思考中..";
+                yield return new WaitForSeconds(0.5f);
+                status.text = "思考中...";
+                yield return new WaitForSeconds(0.5f);
+            }
+        }
+
     }
 }

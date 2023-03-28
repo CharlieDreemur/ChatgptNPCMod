@@ -1,0 +1,14 @@
+{
+  "name": "chatgpt-server",
+  "version": "0.0.0",
+  "description": "ChatgptServer",
+  "main": "app.js",
+  "author": {
+    "name": ""
+  },
+  "devDependencies": {
+    "eslint": "^8.21.0"
+  },
+  "eslintConfig": {
+  }
+}
