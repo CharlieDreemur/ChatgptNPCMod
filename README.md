@@ -4,6 +4,6 @@ Use chatgpt api to make NPC lively \
 通过使用chatgpt api使NPC交互更为生动
 - [x] In-Game GUI
 - [x] NPC talking
-- [ ] Chatgpt API
+- [x] Chatgpt API
 - [ ] When talking, saving different records for different characters
 
